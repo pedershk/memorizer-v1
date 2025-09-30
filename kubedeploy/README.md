@@ -38,16 +38,18 @@ This script will:
 
 ### Access Services
 
-The Memorizer service is exposed via a LoadBalancer with a private/VNET IP address on port 80.
+The Memorizer service is exposed via an **internal LoadBalancer** with a private/VNET IP address on port 80. This is only accessible from within your virtual network for security.
 
 After deployment completes, the script will display:
-- **MCP endpoint**: `http://<LOADBALANCER-IP>/sse`
-- **Admin server**: `http://<LOADBALANCER-IP>/ui`
+- **MCP endpoint**: `http://<PRIVATE-IP>/sse` (VNET only)
+- **Admin server**: `http://<PRIVATE-IP>/ui` (VNET only)
 
 To retrieve the URLs later:
 ```bash
 ./get-url.sh
 ```
+
+**Note**: The LoadBalancer uses an internal/private IP and is NOT exposed to the internet. Access requires being within the same VNET or connected via VPN/peering.
 
 #### Using Port Forwarding (Optional)
 

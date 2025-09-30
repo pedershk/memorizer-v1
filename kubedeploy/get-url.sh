@@ -18,9 +18,9 @@ if [ -z "$MEMORIZER_IP" ]; then
   exit 1
 fi
 
-echo "✅ Memorizer LoadBalancer IP: $MEMORIZER_IP"
+echo "✅ Memorizer Internal LoadBalancer IP: $MEMORIZER_IP (private/VNET only)"
 echo ""
-echo "🌐 Access your Memorizer instance:"
+echo "🌐 Access your Memorizer instance (from within the VNET):"
 echo ""
 echo "   📡 MCP endpoint:  http://$MEMORIZER_IP/sse"
 echo "   🖥️  Admin server:  http://$MEMORIZER_IP/ui"

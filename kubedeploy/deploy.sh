@@ -47,7 +47,7 @@ echo "📊 Checking deployment status..."
 kubectl get all -n app-memorizer
 
 echo ""
-echo "⏳ Waiting for LoadBalancer to get an external IP..."
+echo "⏳ Waiting for internal LoadBalancer to get a private IP..."
 echo "   (This may take 1-2 minutes depending on your cloud provider)"
 
 # Wait for LoadBalancer IP (with timeout)
@@ -78,13 +78,13 @@ if [ -z "$MEMORIZER_IP" ]; then
   echo "⚠️  Warning: LoadBalancer IP not assigned yet. Check status with:"
   echo "   kubectl get svc memorizer -n app-memorizer"
   echo ""
-  echo "🌐 Once the EXTERNAL-IP is assigned, you can access:"
-  echo "   MCP endpoint: http://<EXTERNAL-IP>/sse"
-  echo "   Admin server: http://<EXTERNAL-IP>/ui"
+  echo "🌐 Once the EXTERNAL-IP is assigned, you can access (from within the VNET):"
+  echo "   MCP endpoint: http://<PRIVATE-IP>/sse"
+  echo "   Admin server: http://<PRIVATE-IP>/ui"
 else
-  echo "✅ LoadBalancer IP assigned: $MEMORIZER_IP"
+  echo "✅ Internal LoadBalancer IP assigned: $MEMORIZER_IP (private/VNET only)"
   echo ""
-  echo "🌐 Access your Memorizer instance:"
+  echo "🌐 Access your Memorizer instance (from within the VNET):"
   echo ""
   echo "   📡 MCP endpoint:  http://$MEMORIZER_IP/sse"
   echo "   🖥️  Admin server:  http://$MEMORIZER_IP/ui"

@@ -69,6 +69,13 @@ kind: Service
 metadata:
   name: memorizer
   namespace: app-memorizer
+  annotations:
+    # Azure internal LoadBalancer
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    # Uncomment for AWS instead:
+    # service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+    # Uncomment for GCP instead:
+    # networking.gke.io/load-balancer-type: "Internal"
 spec:
   selector:
     app: memorizer
